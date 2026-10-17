@@ -1,0 +1,111 @@
+# AI Internet Monitor
+
+## 1. Product context
+
+Professionals often need to track changes across websites, public announcements, competitor pages, industry news, or technical documentation. Checking these sources manually is repetitive, while generic alerts can produce too much noise.
+
+The AI Internet Monitor watches a defined set of sources, detects relevant changes, and helps users understand what happened and why it may matter.
+
+## 2. Problem statement
+
+Users need to remain aware of important changes across selected online sources without repeatedly checking each source or receiving an overwhelming number of low-value alerts.
+
+## 3. Target users
+
+Choose one initial audience rather than trying to monitor the entire internet.
+
+A promising starting segment is product managers and founders who track competitors, product announcements, pricing pages, or industry developments.
+
+## 4. Core hypothesis
+
+If users can define what they want to monitor and receive concise, source-linked alerts only when meaningful changes occur, they will spend less time checking sources manually.
+
+## 5. Proposed MVP
+
+- Let users add a small set of supported URLs or public feeds.
+- Check sources on a scheduled basis where technically and legally permitted.
+- Detect changes between previous and current versions.
+- Distinguish substantive changes from formatting or minor page updates.
+- Summarize what changed and link to the original source.
+- Let users mark alerts useful, irrelevant, or duplicate.
+- Provide a simple history of detected changes.
+- Offer a basic digest rather than sending an alert for every event.
+
+Start with RSS feeds and a limited set of accessible web pages. Source access, rate limits, and site terms will determine what can be monitored reliably.
+
+## 6. Product differentiation
+
+The key value is not summarizing web pages. It is deciding which changes deserve attention.
+
+Each alert should include:
+- Source and detection time.
+- A description of the observed change.
+- Evidence supporting the description.
+- Why the change may be relevant to the user's chosen monitoring goal.
+- A link to the original material.
+- An uncertainty flag when the significance is unclear.
+
+The system should distinguish an observed fact from an AI-generated interpretation of its significance.
+
+## 7. PM decisions to demonstrate
+
+- Which user and monitoring use case should be supported first?
+- How frequently should sources be checked?
+- What constitutes a meaningful change?
+- How should duplicate or repeated information be handled?
+- How can users control alert volume?
+- What should happen when a source is inaccessible or changes structure?
+- How should relevance improve from user feedback?
+
+## 8. Success metrics
+
+- Percentage of meaningful changes successfully detected.
+- Percentage of alerts users consider relevant.
+- Duplicate and low-value alert rate.
+- Time between a source change and its detection.
+- Source availability and monitoring failure rate.
+- Percentage of alerts that users open, save, or act on.
+
+Define the test set and what counts as a meaningful change before using these metrics to evaluate the system.
+
+## 9. Initial validation
+
+Ask a few potential users what sources they check repeatedly and which changes would actually affect a decision.
+
+Create a manually labeled set of source changes, then test whether the monitor detects meaningful changes while ignoring irrelevant ones.
+
+## 10. Out of scope
+
+- Monitoring every website.
+- Bypassing access restrictions or anti-bot protections.
+- Guaranteed real-time alerts.
+- Automated actions based on unverified content.
+- Large-scale paid data feeds.
+
+## 11. Portfolio outcome
+
+Demonstrate source selection, change detection, alert relevance, noise reduction, reliability trade-offs, and how user feedback changes monitoring behavior.
+
+
+- PM perspective: This is a good automation product, but its value depends on a specific audience and meaningful alerts. Validate the monitoring problem before investing in a broad crawling system.
+
+
+
+
+- Your PM working checklist
+Use this checklist for each project before implementation begins.
+Project readiness
+0/10
+
+
+
+[ ] Define the target user and problem statement
+[ ] Conduct initial user research or problem validation
+[ ] Write the product hypothesis and assumptions
+[ ] Define MVP scope and explicit non-goals
+[ ] Select success metrics and how to measure them
+[ ] Create user flows and a low-fidelity prototype
+[ ] Define AI evaluation cases and failure handling
+[ ] Build and test the smallest useful version
+[ ] Review results and prioritize the next iteration
+[ ] Publish an honest PM case study

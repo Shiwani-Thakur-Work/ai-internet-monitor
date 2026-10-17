@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="340" height="80" fill="none">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="sentinel-cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="sentinel-violet-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="glow-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="glow" />
+      <feComposite in="SourceGraphic" in2="glow" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Brand Symbol / Emblem -->
+  <g transform="translate(10, 10)">
+    <!-- Outer Shield / Hexagonal Frame -->
+    <path d="M30 4 L54 14 L54 42 C54 53 43 62 30 66 C17 62 6 53 6 42 L6 14 Z" 
+          fill="url(#shield-grad)" 
+          stroke="url(#sentinel-cyan-glow)" 
+          stroke-width="2.5" 
+          filter="drop-shadow(0 2px 8px rgba(6,182,212,0.3))" />
+
+    <!-- Concentric Radar Scan Arcs -->
+    <circle cx="30" cy="35" r="18" stroke="#334155" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
+    <circle cx="30" cy="35" r="11" stroke="url(#sentinel-violet-glow)" stroke-width="1.8" fill="none" opacity="0.85" />
+    
+    <!-- Central Sentinel Core Pulse -->
+    <circle cx="30" cy="35" r="5" fill="url(#sentinel-cyan-glow)" filter="url(#glow-blur)" />
+    
+    <!-- Radar Sweep Needle -->
+    <line x1="30" y1="35" x2="44" y2="23" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" />
+    <circle cx="44" cy="23" r="2" fill="#FFFFFF" />
+  </g>
+
+  <!-- Typography: SentinelAI -->
+  <g transform="translate(80, 48)">
+    <text font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="28" letter-spacing="-0.5" fill="#F8FAFC">
+      Sentinel<tspan fill="url(#sentinel-cyan-glow)">AI</tspan>
+    </text>
+    <text y="16" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="9" letter-spacing="2.8" fill="#94A3B8" text-transform="uppercase">
+      INTERNET &amp; COMPETITIVE RADAR
+    </text>
+  </g>
+</svg>

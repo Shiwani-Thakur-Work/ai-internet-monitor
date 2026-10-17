@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SentinelAI | Intelligent Internet &amp; Competitor Radar</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="SentinelAI | Intelligent Internet & Competitor Radar">
+  <meta name="description" content="AI-powered internet change monitor that watches competitor pages, pricing schedules, and API changelogs without noise or alert fatigue. Features Fact-Evidence-Impact triad and PM evaluation benchmark.">
+  <meta name="keywords" content="AI Internet Monitor, Competitor Tracking, Pricing Monitor, API Changelog Tracker, Semantic Diff Engine, Product Management">
+  <meta name="author" content="SentinelAI Core Team">
+  <meta name="theme-color" content="#06B6D4">
+
+  <!-- OpenGraph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/">
+  <meta property="og:title" content="SentinelAI | Intelligent Internet & Competitor Radar">
+  <meta property="og:description" content="Decides which web changes deserve attention. Distinguishes observed facts from AI interpretation with calibrated uncertainty.">
+  <meta property="og:image" content="./assets/logo.svg">
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="SentinelAI | Intelligent Internet & Competitor Radar">
+  <meta property="twitter:description" content="AI Internet Monitor for Product Managers and Tech Strategists. Eliminate alert fatigue with semantic diffs.">
+  <meta property="twitter:image" content="./assets/logo.svg">
+
+  <!-- Favicon & PWA Icons -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="apple-touch-icon" href="./assets/favicon.svg">
+  <link rel="manifest" href="./manifest.json">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+
+  <!-- App Header & Navigation Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-section">
+        <a href="./index.html" style="display: flex; align-items: center; gap: 10px;">
+          <img src="./assets/logo.svg" alt="SentinelAI Logo" class="brand-logo-img">
+        </a>
+        <span class="brand-badge">PM Intelligence Radar</span>
+      </div>
+
+      <div class="header-actions">
+        <!-- Live Status Pill -->
+        <div class="pulse-status">
+          <div class="pulse-dot" id="live-pulse-dot"></div>
+          <span id="system-status-text">Live Monitoring (8 Sources)</span>
+        </div>
+
+        <!-- Run Scan Simulation Button -->
+        <button id="btn-scan-all" class="btn btn-primary" title="Trigger full crawl, diff, and AI evaluation pipeline">
+          <span>⚡</span> Run Scan Pipeline
+        </button>
+
+        <!-- Add Source Button -->
+        <button id="btn-open-add-source" class="btn btn-secondary" title="Add a custom URL or RSS feed to monitor">
+          <span>+</span> Add Source
+        </button>
+
+        <!-- Theme Switcher (Dark / Light) -->
+        <button id="btn-theme-toggle" class="btn-icon" title="Toggle Dark/Light Theme">
+          🌓
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-wrapper">
+
+    <!-- KPI Metrics Ribbon (PM Success Criteria Dashboard) -->
+    <section class="metrics-ribbon" aria-label="Key Performance Indicators">
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Meaningful Change Recall</span>
+          <div class="metric-icon">🎯</div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="kpi-meaningful-recall">94.2%</span>
+          <span class="metric-delta positive">Target ≥90%</span>
+        </div>
+        <span class="metric-subtext">True meaningful shifts detected</span>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Noise Suppression Rate</span>
+          <div class="metric-icon">🛡️</div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="kpi-noise-filtered">89.1%</span>
+          <span class="metric-delta positive">Target ≥80%</span>
+        </div>
+        <span class="metric-subtext">Cookie, CSS &amp; date noise discarded</span>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Alert Precision</span>
+          <div class="metric-icon">💎</div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="kpi-alert-precision">92.4%</span>
+          <span class="metric-delta positive">User Rated</span>
+        </div>
+        <span class="metric-subtext">Alerts users mark useful</span>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Detection Latency</span>
+          <div class="metric-icon">⏱️</div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="kpi-detection-latency">12 min</span>
+          <span class="metric-delta neutral">Avg Cadence</span>
+        </div>
+        <span class="metric-subtext">Remote publish to alert delivery</span>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Active Sources</span>
+          <div class="metric-icon">🌐</div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="kpi-active-sources">8</span>
+          <span class="metric-delta positive">100% Healthy</span>
+        </div>
+        <span class="metric-subtext">Zero 4xx/5xx failure errors</span>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs-container" aria-label="Views">
+      <div class="nav-tabs">
+        <button class="tab-btn active" data-tab="feed">
+          <span>🔔</span> Live Alert Feed
+          <span class="tab-badge" id="feed-badge-count">5</span>
+        </button>
+        <button class="tab-btn" data-tab="sources">
+          <span>🌐</span> Monitored Sources
+        </button>
+        <button class="tab-btn" data-tab="diff">
+          <span>🔍</span> Deep Diff Inspector
+        </button>
+        <button class="tab-btn" data-tab="benchmark">
+          <span>🧪</span> PM Evaluation Lab
+        </button>
+        <button class="tab-btn" data-tab="digest">
+          <span>📋</span> Executive Briefing
+        </button>
+      </div>
+    </nav>
+
+    <!-- Search, Category & Sensitivity Threshold Toolbar -->
+    <section class="toolbar-panel" id="toolbar-panel">
+      <div class="search-filter-group">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="global-search-input" placeholder="Search facts, changes, or sources..." aria-label="Search alerts">
+        </div>
+
+        <select id="category-filter-select" class="filter-select" aria-label="Filter by category">
+          <option value="ALL">All Categories</option>
+          <option value="PRICING">Pricing &amp; Commercial Terms</option>
+          <option value="API_DOCS">API &amp; Models</option>
+          <option value="CHANGELOG">Product Changelogs</option>
+          <option value="DEPRECATION">Deprecations &amp; Security</option>
+          <option value="INFRASTRUCTURE">Infrastructure</option>
+          <option value="INDUSTRY">Industry &amp; Cloud</option>
+        </select>
+
+        <select id="uncertainty-filter-select" class="filter-select" aria-label="Filter by uncertainty">
+          <option value="ALL">All Uncertainty Levels</option>
+          <option value="LOW">Low Uncertainty (Direct Numerical / Policy)</option>
+          <option value="MED">Medium Uncertainty (Qualitative Update)</option>
+          <option value="HIGH">High Uncertainty (Vague Copy)</option>
+        </select>
+      </div>
+
+      <!-- Sensitivity Control (Precision vs Recall Threshold) -->
+      <div class="sensitivity-control" title="Controls noise threshold: Higher values deliver fewer, higher-confidence alerts. Lower values maximize recall.">
+        <span class="sensitivity-label">
+          <span>⚖️</span> Sensitivity Threshold:
+        </span>
+        <input type="range" id="sensitivity-slider" class="sensitivity-slider" min="0.30" max="0.95" step="0.05" value="0.70" aria-label="Sensitivity Slider">
+        <span class="sensitivity-val" id="sensitivity-value-display">70%</span>
+      </div>
+    </section>
+
+    <!-- Dynamic Main View Container -->
+    <section id="main-view-container" aria-live="polite">
+      <!-- Injected by js/app.js -->
+    </section>
+
+  </main>
+
+  <!-- App Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div>
+        <strong>SentinelAI</strong> • Intelligent Internet &amp; Competitor Radar • Built for Product Managers &amp; Strategists
+      </div>
+      <div class="footer-links">
+        <a href="./doc/context.md" target="_blank">Product Context</a>
+        <a href="./doc/architecture.md" target="_blank">Architecture Spec</a>
+        <a href="./doc/implementation-plan.md" target="_blank">Implementation Plan</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Modals & Simulation Components
+       ======================================================================== -->
+
+  <!-- Modal: Add Custom Monitored Source -->
+  <div class="modal-overlay" id="modal-add-source">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">➕ Add Monitored Source</h3>
+        <button id="btn-close-add-source" class="btn-icon" style="border: none; background: transparent; font-size: 16px;">✕</button>
+      </div>
+      <form id="form-add-source">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="source-name-input">Source Name *</label>
+            <input type="text" id="source-name-input" placeholder="e.g. OpenAI Pricing, Vercel Changelog" required>
+          </div>
+          <div class="form-group">
+            <label for="source-url-input">Source URL / RSS Feed *</label>
+            <input type="url" id="source-url-input" placeholder="https://example.com/pricing" required>
+          </div>
+          <div class="form-group">
+            <label for="source-category-select">Category</label>
+            <select id="source-category-select">
+              <option value="PRICING">Pricing &amp; Terms</option>
+              <option value="API_DOCS">API &amp; Documentation</option>
+              <option value="CHANGELOG" selected>Product Changelog</option>
+              <option value="INFRASTRUCTURE">Infrastructure &amp; Cloud</option>
+              <option value="INDUSTRY">Industry Announcements</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="source-goal-input">Targeted Monitoring Goal *</label>
+            <textarea id="source-goal-input" rows="2" placeholder="e.g. Alert only on enterprise tier changes, price drops, or API deprecations." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="source-freq-select">Check Frequency</label>
+            <select id="source-freq-select">
+              <option value="30">Every 30 Minutes (Critical APIs)</option>
+              <option value="60" selected>Every 1 Hour (Standard)</option>
+              <option value="120">Every 2 Hours</option>
+              <option value="360">Every 6 Hours</option>
+              <option value="1440">Once Daily (Pricing Tables)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-cancel-add-source" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Start Monitoring</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pipeline Simulation Drawer (Demonstrating Section 6 & 7 Crawl Pipeline) -->
+  <aside class="pipeline-drawer" id="pipeline-simulation-drawer" aria-label="Ingestion Pipeline Status">
+    <div class="pipeline-header">
+      <span style="font-size: 13px; font-weight: 700; color: var(--accent-cyan); display: flex; align-items: center; gap: 6px;">
+        <span>⚙️</span> Ingestion Pipeline Active
+      </span>
+      <span style="font-size: 11px; color: var(--text-muted);">Real-time</span>
+    </div>
+    <div class="pipeline-steps">
+      <div class="step-item" id="step-1">
+        <span class="step-icon">1</span>
+        <span>Fetching remote feeds (HTTP 304 cache check)</span>
+      </div>
+      <div class="step-item" id="step-2">
+        <span class="step-icon">2</span>
+        <span>Sanitizing DOM &amp; stripping boilerplate</span>
+      </div>
+      <div class="step-item" id="step-3">
+        <span class="step-icon">3</span>
+        <span>Computing Myers LCS line-by-line delta</span>
+      </div>
+      <div class="step-item" id="step-4">
+        <span class="step-icon">4</span>
+        <span>Heuristic noise filter: suppressed 14 footer lines</span>
+      </div>
+      <div class="step-item" id="step-5">
+        <span class="step-icon">5</span>
+        <span>AI Evaluator: Fact &amp; Impact extraction</span>
+      </div>
+      <div class="step-item" id="step-6">
+        <span class="step-icon">6</span>
+        <span>Alert calibrated &amp; delivered to feed</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Global Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="./js/data.js"></script>
+  <script src="./js/diff-engine.js"></script>
+  <script src="./js/evaluator.js"></script>
+  <script src="./js/benchmark.js"></script>
+  <script src="./js/digest.js"></script>
+  <script src="./js/state.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

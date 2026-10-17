@@ -1,0 +1,18 @@
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*~
+.vscode/
+.idea/
+
+# Node / Build artifacts (if extended in future)
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Antigravity artifacts
+.gemini/

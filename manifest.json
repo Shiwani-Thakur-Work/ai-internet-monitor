@@ -1,0 +1,18 @@
+{
+  "name": "SentinelAI - Intelligent Internet & Competitor Monitor",
+  "short_name": "SentinelAI",
+  "description": "High-signal AI internet monitor tracking web changes, pricing shifts, and API releases without alert fatigue.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#06B6D4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
