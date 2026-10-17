@@ -4,6 +4,18 @@
  */
 
 @media (max-width: 1024px) {
+  .radar-command-deck {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split-console-layout {
+    grid-template-columns: 1fr;
+  }
+
   .metrics-ribbon {
     grid-template-columns: repeat(2, 1fr);
   }

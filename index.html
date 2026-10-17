@@ -143,6 +143,96 @@
       </div>
     </section>
 
+    <!-- Interactive Mission Control Radar & Multi-Agent HUD -->
+    <section class="radar-command-deck" aria-label="Radar Command Deck">
+      <!-- Left: Interactive Canvas Radar -->
+      <div class="radar-scope-wrapper">
+        <div class="radar-hud-header">
+          <span>📡 RADAR SWEEP // ACTIVE</span>
+          <span id="radar-bearing-display">BEARING 042°</span>
+        </div>
+        <div class="radar-canvas-box">
+          <canvas id="radar-canvas" width="320" height="320"></canvas>
+        </div>
+        <div class="radar-hud-footer">
+          <span>FREQ: 2.4 GHz • RANGE: 360°</span>
+          <span style="color: var(--accent-cyan);">CLICK BLIP TO LOCK</span>
+        </div>
+      </div>
+
+      <!-- Right: Multi-Agent "SOUL Watcher" Telemetry Panel -->
+      <div class="multi-agent-panel">
+        <div class="multi-agent-header">
+          <div class="agent-title-wrap">
+            <h2>
+              <span>🤖</span> Multi-Agent "SOUL Watcher" Telemetry
+            </h2>
+            <p class="agent-subtitle">Autonomous multi-agent pipeline filtering internet noise, extracting ground truth, and routing executive signals.</p>
+          </div>
+          <div class="agent-telemetry-stats">
+            <span class="stat-pill">RAW BYTES: <strong>4.8 MB</strong></span>
+            <span class="stat-pill">NOISE SUPPRESSED: <strong>89.1%</strong></span>
+            <span class="stat-pill">SIGNAL FIDELITY: <strong>94.2%</strong></span>
+          </div>
+        </div>
+
+        <!-- 4-Agent Pipeline Workflow Grid -->
+        <div class="agent-flow-grid">
+          <!-- Agent 1 -->
+          <div class="agent-node-card">
+            <div class="agent-node-top">
+              <div class="agent-icon">🕷️</div>
+              <div class="agent-status-light"></div>
+            </div>
+            <div>
+              <div class="agent-name">Ingest Agent</div>
+              <div class="agent-desc">ETag / 304 cache validator &amp; headless snapshotter</div>
+            </div>
+            <div class="agent-metric">8 Sources Polled</div>
+          </div>
+
+          <!-- Agent 2 -->
+          <div class="agent-node-card">
+            <div class="agent-node-top">
+              <div class="agent-icon">🛡️</div>
+              <div class="agent-status-light"></div>
+            </div>
+            <div>
+              <div class="agent-name">Noise Neutralizer</div>
+              <div class="agent-desc">Strips GDPR cookies, footers, &amp; dynamic dates</div>
+            </div>
+            <div class="agent-metric">142 Lines Blocked</div>
+          </div>
+
+          <!-- Agent 3 -->
+          <div class="agent-node-card">
+            <div class="agent-node-top">
+              <div class="agent-icon">🧠</div>
+              <div class="agent-status-light"></div>
+            </div>
+            <div>
+              <div class="agent-name">Strategic Reasoner</div>
+              <div class="agent-desc">Extracts Fact-Evidence-Impact Triad</div>
+            </div>
+            <div class="agent-metric">92.4% Precision</div>
+          </div>
+
+          <!-- Agent 4 -->
+          <div class="agent-node-card">
+            <div class="agent-node-top">
+              <div class="agent-icon">📡</div>
+              <div class="agent-status-light"></div>
+            </div>
+            <div>
+              <div class="agent-name">Dispatch Agent</div>
+              <div class="agent-desc">Clusters duplicates &amp; pushes Slack / Markdown</div>
+            </div>
+            <div class="agent-metric">Real-time Ping</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Navigation Tabs -->
     <nav class="nav-tabs-container" aria-label="Views">
       <div class="nav-tabs">
@@ -322,6 +412,7 @@
   <script src="./js/benchmark.js"></script>
   <script src="./js/digest.js"></script>
   <script src="./js/state.js"></script>
+  <script src="./js/radar.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>

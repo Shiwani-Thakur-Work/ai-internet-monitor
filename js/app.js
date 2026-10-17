@@ -26,7 +26,12 @@ class SentinelApplication {
     // 3. Subscribe to reactive state updates
     AppState.subscribe((state, event) => this.handleStateChange(state, event));
 
-    // 4. Initial Render
+    // 4. Initialize Mission Control Radar Canvas
+    if (window.SentinelRadar) {
+      this.radar = new SentinelRadar("radar-canvas");
+    }
+
+    // 5. Initial Render
     this.renderMetrics();
     this.renderView();
   }
@@ -219,7 +224,7 @@ class SentinelApplication {
   }
 
   /**
-   * Renders the Live Alert Feed with Fact-Evidence-Impact Cards
+   * Renders the Live Alert Feed with Split Intelligence Console (Stream + Studio)
    */
   renderAlertFeed(container) {
     const filteredAlerts = AppState.getFilteredAlerts();
@@ -240,11 +245,67 @@ class SentinelApplication {
       return;
     }
 
+    // Ensure valid active selected alert
+    if (!this.selectedAlertId || !filteredAlerts.some(a => a.id === this.selectedAlertId)) {
+      this.selectedAlertId = filteredAlerts[0].id;
+    }
+
+    const selectedAlert = filteredAlerts.find(a => a.id === this.selectedAlertId) || filteredAlerts[0];
+
     container.innerHTML = `
-      <div class="alert-feed">
-        ${filteredAlerts.map(alert => this.renderAlertCard(alert)).join('')}
+      <div class="split-console-layout">
+        <!-- Left Pane: Live Signal Stream List -->
+        <div class="signal-stream-container">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 6px; font-size: 11.5px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">
+            <span>⚡ Incoming Signals (${filteredAlerts.length})</span>
+            <span style="color: var(--accent-cyan); font-family: 'JetBrains Mono', monospace;">LIVE SYNC</span>
+          </div>
+          ${filteredAlerts.map(alert => {
+            const isActive = alert.id === this.selectedAlertId;
+            const catClass = {
+              PRICING: "badge-pricing",
+              API_DOCS: "badge-api",
+              CHANGELOG: "badge-feature",
+              DEPRECATION: "badge-deprecation",
+              INFRASTRUCTURE: "badge-feature",
+              INDUSTRY: "badge-competitor"
+            }[alert.category] || "badge-feature";
+
+            return `
+              <div class="signal-stream-item ${isActive ? 'active' : ''}" data-stream-id="${alert.id}">
+                <div class="stream-top-row">
+                  <span class="stream-source">
+                    <span style="color: var(--accent-cyan);">●</span> ${this.escapeHtml(alert.sourceName)}
+                  </span>
+                  <span class="stream-time">${alert.timestamp}</span>
+                </div>
+                <div class="stream-title">${this.escapeHtml(alert.title)}</div>
+                <div class="stream-footer-row">
+                  <span class="badge ${catClass}">${alert.categoryLabel}</span>
+                  <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan);">
+                    <span>${Math.round(alert.relevanceScore * 100)}%</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- Right Pane: Intelligence Analysis Studio -->
+        <div class="intelligence-studio">
+          ${this.renderAlertCard(selectedAlert)}
+        </div>
       </div>
     `;
+
+    // Wire clicking on signal stream items
+    container.querySelectorAll(".signal-stream-item").forEach(item => {
+      item.addEventListener("click", (e) => {
+        const id = e.currentTarget.getAttribute("data-stream-id");
+        this.selectedAlertId = id;
+        this.renderAlertFeed(container);
+      });
+    });
 
     // Wire alert card interactive buttons (Feedback & Diff)
     container.querySelectorAll(".feedback-btn").forEach(btn => {
