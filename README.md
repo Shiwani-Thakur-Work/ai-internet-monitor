@@ -3,7 +3,7 @@
 > **High-Signal AI Change Monitor for Product Managers & Founders**  
 > Tracks competitor pricing shifts, product changelogs, and API deprecation notices without noise or alert fatigue.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-06B6D4?style=for-the-badge&logo=github)](./index.html)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-06B6D4?style=for-the-badge&logo=github)](https://shiwani-thakur-work.github.io/ai-internet-monitor/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-8B5CF6?style=for-the-badge)](LICENSE)
 [![Status: Production Ready](https://img.shields.io/badge/Status-Production%20Ready-10B981?style=for-the-badge)](#)
 
